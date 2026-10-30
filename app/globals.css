@@ -737,6 +737,11 @@ p {
   color: var(--ink-2);
   min-height: 3.3em;
 }
+@media (min-width: 1000px) {
+  .plan-tagline {
+    min-height: 5em;
+  }
+}
 .plan-price {
   display: flex;
   align-items: baseline;
