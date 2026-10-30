@@ -24,13 +24,14 @@ export function ContactForm() {
   const { currency, setCurrency } = useCurrency();
   const [sent, setSent] = useState(false);
   const plan = params.get("plan") ?? "";
+  const service = params.get("service") ?? "";
 
   const interests = [
     ...services.map((s) => s.title),
     ...[...projectPlans, ...retainerPlans].map((p) => `${p.name} plan`),
     "Something else",
   ];
-  const defaultInterest = plan ? `${plan} plan` : "";
+  const defaultInterest = plan ? `${plan} plan` : service;
 
   // No backend: compose the enquiry as an email in the visitor's mail client.
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -99,16 +100,8 @@ export function ContactForm() {
             Showing {currency}.{" "}
             <button
               type="button"
+              className="link-button"
               onClick={() => setCurrency(currency === "USD" ? "KES" : "USD")}
-              style={{
-                border: 0,
-                background: "none",
-                padding: 0,
-                color: "var(--accent-strong)",
-                cursor: "pointer",
-                font: "inherit",
-                textDecoration: "underline",
-              }}
             >
               Switch to {currency === "USD" ? "KES" : "USD"}
             </button>

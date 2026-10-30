@@ -8,6 +8,7 @@ export const hourlyRate: Money = { USD: 35, KES: 4500 };
 export type Plan = {
   name: string;
   tagline: string;
+  image: string;
   price: Money;
   prefix?: string;
   suffix?: string;
@@ -20,6 +21,7 @@ export const projectPlans: Plan[] = [
   {
     name: "Launch",
     tagline: "A fast, professional website for a small business or new venture.",
+    image: "/images/websites.png",
     price: { USD: 450, KES: 58000 },
     timeline: "2–3 weeks",
     features: [
@@ -34,6 +36,7 @@ export const projectPlans: Plan[] = [
   {
     name: "Build",
     tagline: "A web application or portal with user accounts and real business logic.",
+    image: "/images/web-apps.png",
     price: { USD: 2500, KES: 325000 },
     prefix: "From",
     timeline: "6–10 weeks",
@@ -50,6 +53,7 @@ export const projectPlans: Plan[] = [
   {
     name: "Scale",
     tagline: "Custom software, mobile apps and integrations for growing organisations.",
+    image: "/images/cloud.png",
     price: { USD: 6000, KES: 780000 },
     prefix: "From",
     timeline: "3–6 months",
@@ -68,6 +72,7 @@ export const retainerPlans: Plan[] = [
   {
     name: "Care",
     tagline: "Keep an existing site or app secure and up to date.",
+    image: "/images/support.png",
     price: { USD: 150, KES: 19500 },
     suffix: "/ month",
     timeline: "Monthly, cancel anytime",
@@ -81,6 +86,7 @@ export const retainerPlans: Plan[] = [
   {
     name: "Grow",
     tagline: "Ongoing improvements from a team that knows your codebase.",
+    image: "/images/integrations.png",
     price: { USD: 600, KES: 78000 },
     suffix: "/ month",
     timeline: "Monthly, 3-month minimum",
@@ -95,6 +101,7 @@ export const retainerPlans: Plan[] = [
   {
     name: "Dedicated",
     tagline: "A full-time developer embedded in your team.",
+    image: "/images/team.png",
     price: { USD: 2200, KES: 285000 },
     suffix: "/ month",
     timeline: "Monthly, 3-month minimum",

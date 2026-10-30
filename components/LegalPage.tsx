@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { legalNav } from "@/lib/site";
+import { PageHero } from "./PageHero";
 
 export function LegalPage({
   title,
@@ -15,13 +16,7 @@ export function LegalPage({
 }) {
   return (
     <>
-      <section className="page-hero page-hero-compact">
-        <div className="container">
-          <p className="eyebrow">Legal</p>
-          <h1>{title}</h1>
-          <p className="lede">Last updated: {updated}</p>
-        </div>
-      </section>
+      <PageHero eyebrow="Legal" title={title} lede={`Last updated: ${updated}`} />
       <section className="section">
         <div className="container legal-layout">
           <aside className="legal-aside" aria-label="Legal documents">

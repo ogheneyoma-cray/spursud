@@ -1,11 +1,10 @@
-import type { ReactNode } from "react";
-import { IconApp, IconCloud, IconCode, IconPlug, IconShield, IconWeb } from "@/components/Icons";
 import type { Money } from "./pricing";
 
 export type Service = {
   id: string;
   title: string;
-  icon: ReactNode;
+  image: string;
+  imageAlt: string;
   summary: string;
   description: string;
   from: Money;
@@ -13,11 +12,13 @@ export type Service = {
   stack: string[];
 };
 
+// Illustrations in /public/images were generated in Canva.
 export const services: Service[] = [
   {
     id: "websites",
     title: "Websites & web design",
-    icon: <IconWeb />,
+    image: "/images/websites.png",
+    imageAlt: "Illustration of a website shown on a laptop and a phone",
     summary: "Fast, search-friendly websites that turn visitors into customers.",
     description:
       "Company sites, landing pages and online catalogues designed around your customers and built to load quickly on mobile networks. You get a site you can update yourself, plus the analytics to see what is working.",
@@ -33,7 +34,8 @@ export const services: Service[] = [
   {
     id: "web-apps",
     title: "Web applications",
-    icon: <IconCode />,
+    image: "/images/web-apps.png",
+    imageAlt: "Illustration of a web application dashboard with charts and tables",
     summary: "Portals, dashboards and SaaS products built around your workflow.",
     description:
       "When a spreadsheet or off-the-shelf tool no longer fits, we build the system your business actually needs: customer portals, booking platforms, inventory and order management, internal dashboards and multi-tenant SaaS.",
@@ -49,7 +51,8 @@ export const services: Service[] = [
   {
     id: "mobile",
     title: "Mobile apps",
-    icon: <IconApp />,
+    image: "/images/mobile.png",
+    imageAlt: "Illustration of two smartphones running a mobile app",
     summary: "Android and iOS apps from a single, maintainable codebase.",
     description:
       "Cross-platform mobile apps that work well on mid-range Android phones and patchy connections as well as on the latest iPhone. We handle the design, build, store listings and release process.",
@@ -65,7 +68,8 @@ export const services: Service[] = [
   {
     id: "integrations",
     title: "APIs & integrations",
-    icon: <IconPlug />,
+    image: "/images/integrations.png",
+    imageAlt: "Illustration of a phone, a server and an invoice connected by cables",
     summary: "Connect payments, ERPs and third-party tools so data flows automatically.",
     description:
       "We connect the systems you already use. Typical work includes M-Pesa Daraja and card payments, eTIMS invoicing, SMS and WhatsApp messaging, accounting packages and custom REST or GraphQL APIs for your partners.",
@@ -81,7 +85,8 @@ export const services: Service[] = [
   {
     id: "cloud",
     title: "Cloud & DevOps",
-    icon: <IconCloud />,
+    image: "/images/cloud.png",
+    imageAlt: "Illustration of a cloud above servers, containers and a launching rocket",
     summary: "Reliable hosting, automated deployments and sensible cloud bills.",
     description:
       "We set up and run the infrastructure behind your software: containerised deployments, CI/CD pipelines, monitoring, backups and cost reviews. We also migrate legacy apps off ageing servers.",
@@ -97,7 +102,8 @@ export const services: Service[] = [
   {
     id: "support",
     title: "Maintenance & support",
-    icon: <IconShield />,
+    image: "/images/support.png",
+    imageAlt: "Illustration of a security shield, a wrench and an uptime monitor",
     summary: "Keep existing software secure, fast and up to date.",
     description:
       "Inherited a codebase or lost your developer? We take over existing projects, run a code and security audit, fix the urgent problems and then keep the system patched and improving on a monthly retainer.",

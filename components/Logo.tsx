@@ -1,17 +1,20 @@
 export function Logo() {
   return (
     <span className="logo">
-      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
-        <rect width="32" height="32" rx="8" fill="var(--accent)" />
+      <svg width="34" height="38" viewBox="0 0 34 38" aria-hidden="true">
+        <path d="M0 38V17C0 7.6 7.6 0 17 0s17 7.6 17 17v21H0z" fill="var(--teal)" />
         <path
-          d="M21.5 10.5c-1.2-1.3-3-2-5.2-2-3.2 0-5.5 1.7-5.5 4.2 0 5.3 10.6 3.4 10.6 7.5 0 1.5-1.6 2.6-4.1 2.6-2.2 0-4.1-.8-5.6-2.3"
+          d="M22.6 14.2c-1.2-1.5-3.1-2.3-5.4-2.3-3.1 0-5.3 1.6-5.3 4 0 5.2 10.6 3.3 10.6 7.6 0 1.6-1.7 2.8-4.3 2.8-2.3 0-4.3-.9-5.7-2.5"
           fill="none"
-          stroke="var(--accent-ink)"
+          stroke="var(--paper)"
           strokeWidth="2.6"
           strokeLinecap="round"
         />
+        <circle cx="27.5" cy="32" r="2.6" fill="var(--coral)" />
       </svg>
-      <span className="logo-word">Spursud</span>
+      <span className="logo-word">
+        Spursud<span className="logo-dot">.</span>
+      </span>
     </span>
   );
 }

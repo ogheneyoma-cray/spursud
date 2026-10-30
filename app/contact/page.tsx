@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ContactForm } from "@/components/ContactForm";
+import { PageHero } from "@/components/PageHero";
 import { company } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,37 +15,29 @@ const mapQuery = encodeURIComponent("Epic Business Park, Links Road, Nyali, Momb
 export default function ContactPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">Contact</p>
-          <h1>Tell us about your project.</h1>
-          <p className="lede">
-            Fill in the form or reach us directly. We reply to every enquiry within one business
-            day.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title={
+          <>
+            Tell us what you&rsquo;re <em>building.</em>
+          </>
+        }
+        lede="Fill in the form or reach us directly. We reply to every enquiry within one business day."
+      />
 
       <section className="section">
         <div className="container contact-grid">
-          <div>
-            <Suspense>
-              <ContactForm />
-            </Suspense>
-          </div>
-
-          <aside>
+          <aside className="contact-card">
+            <h2>Karibu.</h2>
             <ul className="contact-list">
               <li>
                 <h3>Email</h3>
                 <p>
-                  <a href={`mailto:${company.email}`} style={{ overflowWrap: "anywhere" }}>
-                    {company.email}
-                  </a>
+                  <a href={`mailto:${company.email}`}>{company.email}</a>
                 </p>
               </li>
               <li>
-                <h3>Phone & WhatsApp</h3>
+                <h3>Phone &amp; WhatsApp</h3>
                 <p>
                   <a href={company.phoneHref}>{company.phone}</a> ·{" "}
                   <a href={company.whatsappHref} target="_blank" rel="noopener">
@@ -55,15 +48,13 @@ export default function ContactPage() {
               <li>
                 <h3>Office</h3>
                 <address>
-                  {company.address.building}
+                  {company.address.building}, {company.address.street}
                   <br />
-                  {company.address.street}, {company.address.locality}
-                  <br />
-                  {company.address.county}, {company.address.country}
+                  {company.address.locality}, {company.address.county}, {company.address.country}
                 </address>
               </li>
               <li>
-                <h3>Postal address</h3>
+                <h3>Postal</h3>
                 <p>{company.address.postal}</p>
               </li>
               <li>
@@ -71,14 +62,26 @@ export default function ContactPage() {
                 <p>Monday – Friday, 8:30am – 5:30pm EAT</p>
               </li>
             </ul>
-            <iframe
-              className="map-frame"
-              title="Map showing Epic Business Park, Nyali, Mombasa"
-              src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
           </aside>
+
+          <div className="form-card">
+            <h2>Project enquiry</h2>
+            <Suspense>
+              <ContactForm />
+            </Suspense>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-tight" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <iframe
+            className="map-frame"
+            title="Map showing Epic Business Park, Nyali, Mombasa"
+            src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </>

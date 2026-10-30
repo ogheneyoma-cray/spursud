@@ -44,19 +44,21 @@ export function useCurrency(): CurrencyContextValue {
   return ctx;
 }
 
-export function CurrencyToggle({ className = "" }: { className?: string }) {
+const labels = { USD: { symbol: "$", name: "USD" }, KES: { symbol: "KSh", name: "KES" } };
+
+export function CurrencyToggle({ size = "sm" }: { size?: "sm" | "lg" }) {
   const { currency, setCurrency } = useCurrency();
   return (
-    <div className={`currency-toggle ${className}`} role="group" aria-label="Display prices in">
+    <div
+      className={`currency-toggle currency-toggle-${size}`}
+      data-active={currency}
+      role="group"
+      aria-label="Display prices in"
+    >
+      <span className="currency-thumb" aria-hidden="true" />
       {(["USD", "KES"] as const).map((c) => (
-        <button
-          key={c}
-          type="button"
-          aria-pressed={currency === c}
-          className={currency === c ? "active" : ""}
-          onClick={() => setCurrency(c)}
-        >
-          {c}
+        <button key={c} type="button" aria-pressed={currency === c} onClick={() => setCurrency(c)}>
+          <span className="currency-symbol">{labels[c].symbol}</span> {labels[c].name}
         </button>
       ))}
     </div>

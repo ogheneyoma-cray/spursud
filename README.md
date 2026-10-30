@@ -15,6 +15,10 @@ Marketing website for **Spursud Trading Limited** (computer programming services
 
 Visitors can switch the currency between **USD and KES** from the header or the pricing page, and their choice is remembered in the browser. All prices live in `lib/pricing.ts` and `lib/services.tsx`. The KES amounts are set by hand there, not converted live, so update them when you change rates. Company details are kept in `lib/site.ts`.
 
+## Images
+
+The product and page illustrations in `public/images/` were generated in Canva. Each service and pricing plan sets its image in `lib/services.ts` or `lib/pricing.ts`. To swap an image, replace the file and keep the same name.
+
 ## Development
 
 ```bash

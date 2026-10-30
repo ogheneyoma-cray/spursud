@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { nav } from "@/lib/site";
+import { company, nav } from "@/lib/site";
 import { CurrencyToggle } from "./CurrencyProvider";
 import { Logo } from "./Logo";
 
@@ -15,6 +15,14 @@ export function Header() {
 
   return (
     <header className="site-header">
+      <div className="topbar">
+        <div className="container topbar-inner">
+          <span>
+            {company.address.locality}, {company.address.county} · Mon–Fri 8:30–17:30 EAT
+          </span>
+          <a href={company.phoneHref}>{company.phone}</a>
+        </div>
+      </div>
       <div className="container header-inner">
         <Link href="/" className="brand" aria-label="Spursud home">
           <Logo />
@@ -33,21 +41,24 @@ export function Header() {
 
         <nav id="primary-nav" className={`primary-nav ${open ? "open" : ""}`} aria-label="Primary">
           <ul>
-            {nav.map((item) => {
+            {nav.map((item, i) => {
               const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
               return (
                 <li key={item.href}>
                   <Link href={item.href} aria-current={active ? "page" : undefined}>
+                    <span className="nav-num">0{i + 1}</span>
                     {item.label}
                   </Link>
                 </li>
               );
             })}
           </ul>
-          <CurrencyToggle />
-          <Link href="/contact" className="btn btn-primary btn-sm">
-            Start a project
-          </Link>
+          <div className="nav-actions">
+            <CurrencyToggle />
+            <Link href="/contact" className="btn btn-coral btn-sm">
+              Start a project
+            </Link>
+          </div>
         </nav>
       </div>
     </header>

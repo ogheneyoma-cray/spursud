@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CtaBand } from "@/components/CtaBand";
+import { PageHero } from "@/components/PageHero";
 import { company } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -37,24 +37,27 @@ const facts = [
 export default function AboutPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">About us</p>
-          <h1>A Kenyan software company building for the world.</h1>
-          <p className="lede">
-            {company.shortName} helps businesses replace manual work with reliable software, from
-            the first website to complex systems that run the whole operation.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About us"
+        title={
+          <>
+            A Kenyan software company, <em>building for the world.</em>
+          </>
+        }
+        lede={`${company.shortName} helps businesses replace manual work with reliable software, from a first website to systems that run the whole operation.`}
+        image="/images/team.png"
+        imageAlt="Illustration of a software team collaborating in an office with arched Swahili-style windows"
+      />
 
       <section className="section">
-        <div className="container split">
+        <div className="container story">
           <div>
             <p className="eyebrow">Our story</p>
-            <h2>Started on the coast, working everywhere.</h2>
+            <h2>
+              Started on the coast, <em>working everywhere.</em>
+            </h2>
           </div>
-          <div style={{ color: "var(--ink-2)" }}>
+          <div className="story-copy">
             <p>
               {company.name} was incorporated in Kenya on {company.registered} under the Companies
               Act, 2015. We are a privately owned company, based at {company.address.building} on{" "}
@@ -75,38 +78,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section-alt">
-        <div className="container">
-          <div className="stat-row">
-            {facts.map((f) => (
-              <div key={f.label} className="stat">
-                <strong>{f.value}</strong>
-                <span>{f.label}</span>
-              </div>
-            ))}
-          </div>
+      <section className="section-tight section-sand">
+        <div className="container facts">
+          {facts.map((f) => (
+            <div key={f.label}>
+              <strong>{f.value}</strong>
+              <span>{f.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">What we believe</p>
-            <h2>The principles behind every project.</h2>
+            <div>
+              <p className="eyebrow">What we believe</p>
+              <h2>The principles behind every project.</h2>
+            </div>
           </div>
-          <div className="grid grid-4">
+          <ol className="values">
             {values.map((v) => (
-              <div key={v.title} className="card">
+              <li key={v.title}>
                 <h3>{v.title}</h3>
                 <p>{v.text}</p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
-      <section className="section section-alt">
-        <div className="container split">
+      <section className="section section-sand">
+        <div className="container story">
           <div>
             <p className="eyebrow">Company details</p>
             <h2>Registered and accountable.</h2>
@@ -114,39 +117,37 @@ export default function AboutPage() {
               You will always know exactly who you are contracting with.
             </p>
           </div>
-          <div className="table-wrap">
-            <table>
-              <tbody>
-                <tr>
-                  <th scope="row">Registered name</th>
-                  <td>{company.name}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Company number</th>
-                  <td>{company.number}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Incorporated</th>
-                  <td>{company.registered}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Registered office</th>
-                  <td>
-                    {company.address.building}, {company.address.street}, {company.address.locality}
-                    , {company.address.county}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Postal address</th>
-                  <td>{company.address.postal}</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="registry">
+            <div className="registry-inner">
+              <dl>
+                <div>
+                  <dt>Registered name</dt>
+                  <dd>{company.name}</dd>
+                </div>
+                <div>
+                  <dt>Company number</dt>
+                  <dd>{company.number}</dd>
+                </div>
+                <div>
+                  <dt>Incorporated</dt>
+                  <dd>{company.registered}</dd>
+                </div>
+                <div>
+                  <dt>Registered office</dt>
+                  <dd>
+                    {company.address.building}, {company.address.street}, {company.address.locality},{" "}
+                    {company.address.county}
+                  </dd>
+                </div>
+                <div>
+                  <dt>Postal address</dt>
+                  <dd>{company.address.postal}</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       </section>
-
-      <CtaBand title="Let's build something useful" />
     </>
   );
 }

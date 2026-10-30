@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CtaBand } from "@/components/CtaBand";
 import { CurrencyToggle, Price } from "@/components/CurrencyProvider";
+import { PageHero } from "@/components/PageHero";
 import { PlanCard } from "@/components/PlanCard";
 import { hourlyRate, projectPlans, retainerPlans } from "@/lib/pricing";
 
@@ -37,75 +37,83 @@ const faqs = [
 export default function PricingPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">Pricing</p>
-          <h1>Clear prices in US dollars or Kenyan shillings.</h1>
-          <p className="lede">
-            Starting prices for our most common engagements. Your final quote is fixed in writing
-            before any work begins.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Pricing"
+        title={
+          <>
+            Honest prices, in <em>dollars or shillings.</em>
+          </>
+        }
+        lede="Starting prices for our most common engagements. Your final quote is fixed in writing before any work begins."
+      />
 
       <section className="section">
         <div className="container">
-          <div className="pricing-controls">
-            <span>Show prices in</span>
-            <CurrencyToggle className="currency-toggle-lg" />
+          <div className="pricing-switch">
+            <p>
+              Show me prices in
+              <small>Your choice is remembered across the site.</small>
+            </p>
+            <CurrencyToggle size="lg" />
           </div>
 
           <div className="section-head">
-            <h2>Project packages</h2>
-            <p>One-off builds with a defined scope, timeline and handover.</p>
-          </div>
-          <div className="grid grid-3">
-            {projectPlans.map((plan) => (
-              <PlanCard key={plan.name} plan={plan} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-head">
-            <h2>Monthly retainers</h2>
-            <p>Ongoing development, maintenance and support from a team that knows your system.</p>
-          </div>
-          <div className="grid grid-3">
-            {retainerPlans.map((plan) => (
-              <PlanCard key={plan.name} plan={plan} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="rate-strip">
             <div>
-              <h2 style={{ fontSize: "1.4rem" }}>Hourly and ad-hoc work</h2>
+              <p className="eyebrow">Projects</p>
+              <h2>One-off builds</h2>
+            </div>
+            <p>A defined scope, a timeline and a full handover at the end.</p>
+          </div>
+          <div className="plans">
+            {projectPlans.map((plan, i) => (
+              <PlanCard key={plan.name} plan={plan} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-sand">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Retainers</p>
+              <h2>Ongoing care &amp; development</h2>
+            </div>
+            <p>A team that already knows your system, on call every month.</p>
+          </div>
+          <div className="plans">
+            {retainerPlans.map((plan, i) => (
+              <PlanCard key={plan.name} plan={plan} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-tight">
+        <div className="container">
+          <div className="receipt">
+            <div>
+              <h2>Hourly &amp; ad-hoc work</h2>
               <p>
-                For small fixes, consulting, code reviews or technical advice, we bill by the hour
-                in 30-minute increments, with an estimate agreed up front.
+                Small fixes, consulting, code reviews or technical advice, billed in 30-minute
+                increments with an estimate agreed up front.
               </p>
             </div>
-            <p className="rate-figure">
+            <p className="receipt-figure">
               <Price value={hourlyRate} /> <small>/ hour</small>
             </p>
           </div>
         </div>
       </section>
 
-      <section className="section section-alt">
-        <div className="container split">
+      <section className="section">
+        <div className="container faq-grid">
           <div>
             <p className="eyebrow">FAQ</p>
-            <h2>Payments and billing</h2>
+            <h2>Payments &amp; billing</h2>
             <p style={{ color: "var(--ink-2)" }}>
-              See our <Link href="/terms">Terms of Service</Link> and{" "}
-              <Link href="/refund-policy">Refund Policy</Link> for full details.
+              Full details are in our <Link href="/terms">Terms of Service</Link> and{" "}
+              <Link href="/refund-policy">Refund Policy</Link>.
             </p>
           </div>
           <div className="faq">
@@ -118,11 +126,6 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
-
-      <CtaBand
-        title="Get a fixed quote"
-        text="Share your requirements and we will send a written scope and price in your preferred currency."
-      />
     </>
   );
 }
