@@ -5,7 +5,7 @@ export const company = {
   number: "PVT-RXU22JQR",
   registered: "16 February 2021",
   registeredYear: 2021,
-  email: "spursudtradinglimited@gmail.com",
+  email: "hello@spursud.com",
   phone: "+254 725 950 000",
   phoneHref: "tel:+254725950000",
   whatsappHref: "https://wa.me/254725950000",
