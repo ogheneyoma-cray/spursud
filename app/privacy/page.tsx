@@ -140,7 +140,7 @@ export default function PrivacyPage() {
       <p>
         We may update this policy from time to time, and the latest version will always be
         published here. For privacy questions or requests, contact us at{" "}
-        <a href={`mailto:${company.email}`}>{company.email}</a>, call {company.phone}, or write to{" "}
+        <a href={`mailto:${company.email}`}>{company.email}</a> or write to{" "}
         {company.name}, {company.address.postal}, Kenya.
       </p>
     </LegalPage>

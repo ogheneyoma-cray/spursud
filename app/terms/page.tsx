@@ -133,7 +133,7 @@ export default function TermsPage() {
       <p>
         We may update these Terms from time to time. The version published on this page applies to
         new engagements from its &ldquo;last updated&rdquo; date. Questions about these Terms can be
-        sent to <a href={`mailto:${company.email}`}>{company.email}</a> or {company.phone}.
+        sent to <a href={`mailto:${company.email}`}>{company.email}</a>.
       </p>
     </LegalPage>
   );

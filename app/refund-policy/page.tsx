@@ -126,8 +126,8 @@ export default function RefundPolicyPage() {
       <h2>12. Your statutory rights</h2>
       <p>
         Nothing in this policy affects any rights you may have under the Consumer Protection Act,
-        2012 or other applicable Kenyan law. If you have questions about this policy, call us on{" "}
-        {company.phone} or write to {company.name}, {company.address.postal}, Kenya.
+        2012 or other applicable Kenyan law. If you have questions about this policy, email{" "}
+        <a href={`mailto:${company.email}`}>{company.email}</a> or write to {company.name}, {company.address.postal}, Kenya.
       </p>
     </LegalPage>
   );

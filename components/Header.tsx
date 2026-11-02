@@ -20,7 +20,7 @@ export function Header() {
           <span>
             {company.address.locality}, {company.address.county} · Mon–Fri 8:30–17:30 EAT
           </span>
-          <a href={company.phoneHref}>{company.phone}</a>
+          <a href={`mailto:${company.email}`}>{company.email}</a>
         </div>
       </div>
       <div className="container header-inner">

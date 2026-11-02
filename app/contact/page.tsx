@@ -37,15 +37,6 @@ export default function ContactPage() {
                 </p>
               </li>
               <li>
-                <h3>Phone &amp; WhatsApp</h3>
-                <p>
-                  <a href={company.phoneHref}>{company.phone}</a> ·{" "}
-                  <a href={company.whatsappHref} target="_blank" rel="noopener">
-                    WhatsApp
-                  </a>
-                </p>
-              </li>
-              <li>
                 <h3>Office</h3>
                 <address>
                   {company.address.building}, {company.address.street}

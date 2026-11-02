@@ -34,11 +34,9 @@ export function Footer() {
           <div>
             <h2 className="footer-heading">Talk</h2>
             <p>
-              <a href={company.phoneHref}>{company.phone}</a>
+              <a href={`mailto:${company.email}`}>{company.email}</a>
               <br />
-              <a href={company.whatsappHref} target="_blank" rel="noopener">
-                WhatsApp us
-              </a>
+              <Link href="/contact">Send an enquiry</Link>
             </p>
           </div>
           <div>
