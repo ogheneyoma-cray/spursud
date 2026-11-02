@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { company, nav } from "@/lib/site";
+import { CartLink } from "./AddToCart";
 import { CurrencyToggle } from "./CurrencyProvider";
 import { Logo } from "./Logo";
 
@@ -27,6 +28,8 @@ export function Header() {
         <Link href="/" className="brand" aria-label="Spursud home">
           <Logo />
         </Link>
+
+        <CartLink />
 
         <button
           type="button"

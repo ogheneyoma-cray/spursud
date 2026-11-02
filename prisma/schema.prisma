@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrderStatus {
+  awaiting_payment
+  paid
+  cancelled
+}
+
+enum Currency {
+  USD
+  KES
+}
+
+model Order {
+  id               String      @id @default(cuid())
+  reference        String      @unique
+  status           OrderStatus @default(awaiting_payment)
+  currency         Currency
+  customerName     String
+  customerEmail    String
+  customerPhone    String?
+  companyName      String?
+  notes            String?
+  total            Int // whole USD or KES
+  paymentReference String?
+  paidAt           DateTime?
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  items OrderItem[]
+
+  @@index([status, createdAt])
+}
+
+/// Name and price are copied from lib/packages.ts when the order is placed.
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  packageId String
+  name      String
+  unitPrice Int
+  quantity  Int
+  lineTotal Int
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}

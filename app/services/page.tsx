@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Price } from "@/components/CurrencyProvider";
+import { AddToCart } from "@/components/AddToCart";
+import { CurrencyToggle, Price } from "@/components/CurrencyProvider";
 import { PageHero } from "@/components/PageHero";
+import { packages } from "@/lib/packages";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Websites, web applications, mobile apps, API integrations, cloud and DevOps, and software maintenance from Spursud in Mombasa, Kenya.",
+    "Fixed-price web, app, SEO and support services from $100 to $250 that you can order online, plus custom websites, apps and integrations from Spursud in Mombasa, Kenya.",
 };
 
 const industries = [
@@ -32,11 +34,68 @@ export default function ServicesPage() {
             Computer programming, <em>end to end.</em>
           </>
         }
-        lede="Pick a single service or let us run the whole project. Every engagement starts with a written scope and a fixed quote in USD or KES."
+        lede="Order a fixed-price service online, or let us run the whole project. Prices are in USD or KES, and no payment is taken until we've sent your invoice."
       />
 
-      <section className="section">
+      <section className="section" aria-labelledby="packages-heading">
         <div className="container">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Order online</p>
+              <h2 id="packages-heading">
+                Fixed-price services, <em>ready to order.</em>
+              </h2>
+            </div>
+            <div className="shop-head-side">
+              <p>Add what you need to your cart and check out. We confirm by email and send an invoice within one business day.</p>
+              <CurrencyToggle />
+            </div>
+          </div>
+          <ul className="package-grid">
+            {packages.map((p) => (
+              <li key={p.id} id={p.id} className="package-card">
+                <div className="package-media">
+                  <Image src={p.image} alt={p.imageAlt} width={600} height={450} sizes="(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 90vw" />
+                  <span className="package-tag">{p.category}</span>
+                </div>
+                <div className="package-body">
+                  <h3>{p.title}</h3>
+                  <p className="package-summary">{p.summary}</p>
+                  <ul className="tick-list">
+                    {p.includes.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="package-foot">
+                    <div>
+                      <p className="package-price">
+                        <Price value={p.price} />
+                      </p>
+                      <p className="package-delivery">Delivered in {p.delivery}</p>
+                    </div>
+                    <AddToCart packageId={p.id} title={p.title} />
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section section-sand" aria-labelledby="projects-heading">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Bigger projects</p>
+              <h2 id="projects-heading">
+                Need something <em>made to measure?</em>
+              </h2>
+            </div>
+            <p>
+              For full websites, apps and integrations we scope the work with you first and send a fixed
+              quote. See <Link href="/pricing">pricing</Link> for typical budgets.
+            </p>
+          </div>
           {services.map((s, i) => (
             <article key={s.id} id={s.id} className="feature">
               <div className="feature-media">
@@ -69,14 +128,8 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="feature-foot">
-                  <span className="feature-price">
-                    From
-                    <strong>
-                      <Price value={s.from} />
-                    </strong>
-                  </span>
                   <Link href={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn-line btn-sm">
-                    Enquire
+                    Get a quote
                   </Link>
                 </div>
               </div>
@@ -85,7 +138,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section section-sand">
+      <section className="section">
         <div className="container">
           <div className="section-head">
             <div>

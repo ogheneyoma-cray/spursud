@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { CartProvider } from "@/components/CartProvider";
 import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -39,9 +40,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         <CurrencyProvider>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
+          <CartProvider>
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+          </CartProvider>
         </CurrencyProvider>
       </body>
     </html>

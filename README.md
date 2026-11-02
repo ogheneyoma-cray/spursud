@@ -7,13 +7,24 @@ Marketing website for **Spursud Trading Limited** (computer programming services
 | Route | Purpose |
 | --- | --- |
 | `/` | Home |
-| `/services` | Service details |
+| `/services` | Fixed-price services you can order online, plus bigger projects |
 | `/pricing` | Packages, retainers and hourly rate in USD / KES |
 | `/about` | Company story and registration details |
 | `/contact` | Enquiry form (opens the visitor's email app) and contact details |
+| `/cart`, `/checkout` | Cart and checkout for the fixed-price services |
+| `/order/[reference]` | The customer's order page (the reference is the secret link) |
+| `/admin` | Orders list; mark an order paid or cancel it (password login) |
 | `/terms`, `/privacy`, `/refund-policy` | Legal pages |
 
 Visitors can switch the currency between **USD and KES** from the header or the pricing page, and their choice is remembered in the browser. All prices live in `lib/pricing.ts` and `lib/services.tsx`. The KES amounts are set by hand there, not converted live, so update them when you change rates. Company details are kept in `lib/site.ts`.
+
+## Orders
+
+The fixed-price services are in `lib/packages.ts`. Checkout reprices every order from that file, so a price sent by the browser is never used. There is no payment gateway: an order is saved as **awaiting payment**, you email the customer an invoice, and once the money arrives you click **Mark as paid** in `/admin`. The customer then gets a "payment received" email.
+
+Emails are sent through Resend when `RESEND_API_KEY` is set (optionally `EMAIL_FROM`). Without it they are only written to the server log, so check `/admin` for new orders.
+
+Runtime environment variables: `DATABASE_URL` (Postgres), `ADMIN_PASSWORD`, `SESSION_SECRET`, and optionally `RESEND_API_KEY` and `EMAIL_FROM`. The container runs `prisma migrate deploy` before it starts.
 
 ## Images
 
@@ -23,6 +34,8 @@ The product and page illustrations in `public/images/` were generated in Canva. 
 
 ```bash
 npm install
+# .env with DATABASE_URL, ADMIN_PASSWORD and SESSION_SECRET
+npx prisma migrate deploy
 npm run dev
 ```
 
