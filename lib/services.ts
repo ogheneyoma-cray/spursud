@@ -17,7 +17,7 @@ export const services: Service[] = [
   {
     id: "websites",
     title: "Websites & web design",
-    image: "/images/websites.png",
+    image: "/images/websites.jpg",
     imageAlt: "Illustration of a website shown on a laptop and a phone",
     summary: "Fast, search-friendly websites that turn visitors into customers.",
     description:
@@ -34,7 +34,7 @@ export const services: Service[] = [
   {
     id: "web-apps",
     title: "Web applications",
-    image: "/images/web-apps.png",
+    image: "/images/web-apps.jpg",
     imageAlt: "Illustration of a web application dashboard with charts and tables",
     summary: "Portals, dashboards and SaaS products built around your workflow.",
     description:
@@ -51,7 +51,7 @@ export const services: Service[] = [
   {
     id: "mobile",
     title: "Mobile apps",
-    image: "/images/mobile.png",
+    image: "/images/mobile.jpg",
     imageAlt: "Illustration of two smartphones running a mobile app",
     summary: "Android and iOS apps from a single, maintainable codebase.",
     description:
@@ -68,7 +68,7 @@ export const services: Service[] = [
   {
     id: "integrations",
     title: "APIs & integrations",
-    image: "/images/integrations.png",
+    image: "/images/integrations.jpg",
     imageAlt: "Illustration of a phone, a server and an invoice connected by cables",
     summary: "Connect payments, ERPs and third-party tools so data flows automatically.",
     description:
@@ -85,7 +85,7 @@ export const services: Service[] = [
   {
     id: "cloud",
     title: "Cloud & DevOps",
-    image: "/images/cloud.png",
+    image: "/images/cloud.jpg",
     imageAlt: "Illustration of a cloud above servers, containers and a launching rocket",
     summary: "Reliable hosting, automated deployments and sensible cloud bills.",
     description:
@@ -102,7 +102,7 @@ export const services: Service[] = [
   {
     id: "support",
     title: "Maintenance & support",
-    image: "/images/support.png",
+    image: "/images/support.jpg",
     imageAlt: "Illustration of a security shield, a wrench and an uptime monitor",
     summary: "Keep existing software secure, fast and up to date.",
     description:

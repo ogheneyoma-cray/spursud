@@ -93,7 +93,7 @@ export default function HomePage() {
           <div className="hero-media">
             <div className="arch">
               <Image
-                src="/images/hero.png"
+                src="/images/hero.jpg"
                 alt="Illustration of a dhow whose sail is a code editor, sailing toward a coastal town"
                 width={640}
                 height={800}
@@ -184,7 +184,7 @@ export default function HomePage() {
         <div className="container why-grid">
           <div className="why-media arch">
             <Image
-              src="/images/team.png"
+              src="/images/team.jpg"
               alt="Illustration of a software team working together in a bright coastal office"
               width={600}
               height={800}

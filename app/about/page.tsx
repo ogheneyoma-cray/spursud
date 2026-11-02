@@ -45,7 +45,7 @@ export default function AboutPage() {
           </>
         }
         lede={`${company.shortName} helps businesses replace manual work with reliable software, from a first website to systems that run the whole operation.`}
-        image="/images/team.png"
+        image="/images/team.jpg"
         imageAlt="Illustration of a software team collaborating in an office with arched Swahili-style windows"
       />
 
